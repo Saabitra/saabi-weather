@@ -9,7 +9,9 @@ type CurrentWeather {
 type Daily {
   apparent_temperature_max: [Float]
   apparent_temperature_min: [Float]
+  precipitation_probability_max: [Int]
   precipitation_sum: [Float]
+  rain_sum: [Int]
   sunrise: [DateTime]
   sunset: [DateTime]
   temperature_2m_max: [Float]
@@ -23,7 +25,9 @@ type Daily {
 type DailyUnits {
   apparent_temperature_max: String
   apparent_temperature_min: String
+  precipitation_probability_max: String
   precipitation_sum: String
+  rain_sum: String
   sunrise: String
   sunset: String
   temperature_2m_max: String
@@ -36,7 +40,7 @@ type DailyUnits {
 }
 type Hourly {
   apparent_temperature: [Float]
-  cloudcover: [Int]
+  dewpoint_2m: [Float]
   is_day: [Int]
   precipitation: [Float]
   precipitation_probability: [Int]
@@ -47,14 +51,11 @@ type Hourly {
   uv_index: [Float]
   uv_index_clear_sky: [Float]
   weathercode: [Int]
-  winddirection_10m: [Int]
-  winddirection_80m: [Int]
   windspeed_10m: [Float]
-  windspeed_80m: [Float]
 }
 type HourlyUnits {
   apparent_temperature: String
-  cloudcover: String
+  dewpoint_2m: String
   is_day: String
   precipitation: String
   precipitation_probability: String
@@ -65,10 +66,7 @@ type HourlyUnits {
   uv_index: String
   uv_index_clear_sky: String
   weathercode: String
-  winddirection_10m: String
-  winddirection_80m: String
   windspeed_10m: String
-  windspeed_80m: String
 }
 type Root {
   current_weather: CurrentWeather
@@ -81,7 +79,7 @@ type Root {
   latitude: Float
   longitude: Float
   timezone: String
-  timezone_abbreviation: Int
+  timezone_abbreviation: String
   utc_offset_seconds: Int
 }
 
@@ -92,6 +90,7 @@ type Query {
     hourly: String
     latitude: String
     longitude: String
+    models: String
     timezone: String
-  ): Root @rest(endpoint: "https://api.open-meteo.com/v1/forecast")
+  ): Root @rest(endpoint: "https://api.open-meteo.com/v1/forecast?latitude=22.56&longitude=88.36&hourly=temperature_2m,relativehumidity_2m,dewpoint_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,pressure_msl,windspeed_10m,uv_index,uv_index_clear_sky,is_day&models=best_match&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,uv_index_clear_sky_max,precipitation_sum,rain_sum,precipitation_probability_max,windspeed_10m_max&current_weather=true&timezone=auto")
 }

@@ -10,7 +10,9 @@ interface CurrentWeather {
 interface Daily {
   apparent_temperature_max: [number];
   apparent_temperature_min: [number];
+  precipitation_probability_max: [number];
   precipitation_sum: [number];
+  rain_sum: [number];
   sunrise: [string];
   sunset: [string];
   temperature_2m_max: [number];
@@ -25,7 +27,9 @@ interface Daily {
 interface DailyUnits {
   apparent_temperature_max: string;
   apparent_temperature_min: string;
+  precipitation_probability_max: string;
   precipitation_sum: string;
+  rain_sum: string;
   sunrise: string;
   sunset: string;
   temperature_2m_max: string;
@@ -39,7 +43,7 @@ interface DailyUnits {
 
 interface Hourly {
   apparent_temperature: [number];
-  cloudcover: [number];
+  dewpoint_2m: [number];
   is_day: [number];
   precipitation: [number];
   precipitation_probability: [number];
@@ -50,15 +54,15 @@ interface Hourly {
   uv_index: [number];
   uv_index_clear_sky: [number];
   weathercode: [number];
-  winddirection_10m: [number];
-  winddirection_80m: [number];
+  // winddirection_10m: [number];
+  // winddirection_80m: [number];
   windspeed_10m: [number];
-  windspeed_80m: [number];
+  // windspeed_80m: [number];
 }
 
 interface HourlyUnits {
   apparent_temperature: string;
-  cloudcover: string;
+  dewpoint_2m: string;
   is_day: string;
   precipitation: string;
   precipitation_probability: string;
@@ -69,10 +73,10 @@ interface HourlyUnits {
   uv_index: string;
   uv_index_clear_sky: string;
   weathercode: string;
-  winddirection_10m: string;
-  winddirection_80m: string;
+  // winddirection_10m: string;
+  // winddirection_80m: string;
   windspeed_10m: string;
-  windspeed_80m: string;
+  // windspeed_80m: string;
 }
 
 interface Root {
